@@ -1,0 +1,100 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Demo : jPlayer as video playlist and audio playlist players</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link href="dist/skin/blue.monday/css/jplayer.blue.monday.min.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="lib/jquery.min.js"></script>
+    <script type="text/javascript" src="dist/jplayer/jquery.jplayer.min.js"></script>
+    <script type="text/javascript" src="dist/add-on/jplayer.playlist.min.js"></script>
+    <script type="text/javascript">
+        //<![CDATA[
+        var k;
+        $(document).ready(function() {
+            var playlist = [{
+                "title": "Радіо Сковорода",
+                "mp3": "http://195.248.234.62:8000/radioskovoroda"
+            }, {
+                "title": "Радіо Львівська хвиля",
+                "mp3": "http://onair.lviv.fm:8000/lviv32.fm"
+            }];
+            new jPlayerPlaylist({
+                    jPlayer: "#jquery_jplayer_1",
+                    cssSelectorAncestor: "#jp_container_1"
+                }, playlist, {
+                    ready: function(event) {
+                        ready = true;
+
+                        $(this).jPlayer("setMedia", playlist[0])
+                    },
+                    play: function(event) {
+                        if(event.jPlayer.status.media.title==="Радіо Сковорода")k=0;
+                        if(event.jPlayer.status.media.title==="Радіо Львівська хвиля")k=1;
+                    },
+                    pause: function() {
+                        $(this).jPlayer("clearMedia");
+                    },
+                    error: function(event) {
+                    if (ready && event.jPlayer.error.type === $.jPlayer.error.URL_NOT_SET) {
+                        // Setup the media stream again and play it.
+                        $(this).jPlayer("setMedia", playlist[k]).jPlayer("play");
+                    }
+                },
+                swfPath: "jPlayer",
+                supplied: "mp3",
+                preload: "none",
+                wmode: "window",
+                useStateClassSkin: true,
+                autoBlur: false,
+                keyEnabled: true
+            });
+
+        /*function getsong(e) {
+            var i = 0;
+            var obj = playlist.filter(function() {
+                for (i; i <= playlist.length; i++) {
+                    if (e.jPlayer.status.media.title == playlist[i].title) return e.jPlayer.status.media.title == playlist[i].title;
+                }
+            })[i];
+            console.log(obj);
+            return obj;
+        }*/
+        });
+        //]]>
+    </script>
+</head>
+
+<body>
+
+    <div id="jquery_jplayer_1" class="jp-jplayer"></div>
+    <div id="jp_container_1" class="jp-audio" role="application" aria-label="media player">
+        <div class="jp-type-playlist">
+            <div class="jp-gui jp-interface">
+                <div class="jp-controls">
+                    <button class="jp-previous" role="button" tabindex="0">previous</button>
+                    <button class="jp-play" role="button" tabindex="0">play</button>
+                    <button class="jp-next" role="button" tabindex="0">next</button>
+                </div>
+
+                <div class="jp-volume-controls">
+                    <button class="jp-mute" role="button" tabindex="0">mute</button>
+                    <button class="jp-volume-max" role="button" tabindex="0">max volume</button>
+                    <div class="jp-volume-bar">
+                        <div class="jp-volume-bar-value"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="jp-playlist">
+                <ul>
+                    <li>&nbsp;</li>
+                </ul>
+            </div>
+            <div class="jp-no-solution">
+                <span>Update Required</span> To play the media you will need to either update your browser to a recent version or update your <a href="http://get.adobe.com/flashplayer/" target="_blank">Flash plugin</a>.
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
