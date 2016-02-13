@@ -4767,9 +4767,8 @@ tbody.collapse.in {
 }
 
 #includedContent{
-width:100%;
-height: 170px;
-margin-right: -20%;
+    width: 130%;
+    height: 250px;
 }
 .radio{
   color:white;
