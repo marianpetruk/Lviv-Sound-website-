@@ -25,14 +25,11 @@ $(document).ready(function() {
         overlayShow: true,
         fitToView: false,
         maxWidth: 940,
-
         openEffect: 'elastic',
         openSpeed: 150,
-
         closeEffect: 'elastic',
         closeSpeed: 150,
         closeClick: true,
-
         helpers: {
             overlay: null
         }
