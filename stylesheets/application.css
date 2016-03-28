@@ -286,7 +286,7 @@ textarea {
     line-height: inherit;
 }
 a {
-    color: #00b6ad;
+    color: #F49739;
     text-decoration: none;
     -webkit-transition: 0.5s ease;
     -o-transition: 0.5s ease;
@@ -3633,7 +3633,7 @@ tbody.collapse.in {
     margin: 0;
     padding: 0 3px;
 }
-.social-media-links a {
+.git{
     display: block;
     width: 40px;
     height: 40px;
@@ -3643,12 +3643,18 @@ tbody.collapse.in {
     color: white;
     text-align: center;
 }
-.social-media-links a:hover,
-.social-media-links a:focus {
+.git,
+.git {
     background: transparent;
     color: white;
     text-decoration: none;
 }
+.lang{
+    display: block;
+    background: transparent;
+    text-align: center;
+}
+
 .addthis_default_style {
     text-align: left;
     list-style: none;

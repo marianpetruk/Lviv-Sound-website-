@@ -28,7 +28,11 @@
 			{
 			"title": "Радіо Ера",
 			"mp3": "http://212.26.129.2:8000/era96"
-			}];
+			},{
+			"title": "Радіо Хіт FM",
+			"mp3": "http://online-hitfm.tavrmedia.ua/HitFM_32"
+
+}];
             new jPlayerPlaylist({
                     jPlayer: "#jquery_jplayer_1",
                     cssSelectorAncestor: "#jp_container_1"
@@ -41,6 +45,10 @@
                     play: function(event) {
                         if(event.jPlayer.status.media.title==="Радіо Сковорода")k=0;
                         if(event.jPlayer.status.media.title==="Радіо Львівська хвиля")k=1;
+                        if(event.jPlayer.status.media.title==="Радіо Люкс")k=0;
+                        if(event.jPlayer.status.media.title==="Радіо FM Галичина")k=3;
+                        if(event.jPlayer.status.media.title==="Радіо Ера")k=4;
+			if(event.jPlayer.status.media.title==="Радіо Хіт FM")k=5;
                     },
                     pause: function() {
                         $(this).jPlayer("clearMedia");
